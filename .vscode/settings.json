@@ -1,0 +1,24 @@
+{
+  "files.exclude": {
+    "**/*.pyc": true,
+    "src/": true,
+    "**/spikes/build": true,
+    "**/spikes/dist": true,
+    "**/__pycache__": true,
+    "**/.pytest_cache": true
+  },
+  "[html]": {
+    "editor.tabSize": 2
+  },
+  "[python]": {
+    "editor.formatOnSave": true
+  },
+  "prettier.printWidth": 100,
+  "prettier.singleQuote": true,
+  "prettier.trailingComma": "es5",
+  "editor.formatOnSave": true,
+  "javascript.validate.enable": false,
+  "python.pythonPath": "/Users/peterconerly/.virtualenvs/spikes/bin/python",
+  "python.linting.pylintEnabled": false,
+  "python.formatting.provider": "yapf",
+}
