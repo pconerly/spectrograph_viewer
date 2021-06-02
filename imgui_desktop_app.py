@@ -13,14 +13,12 @@ import OpenGL.GL as gl
 from functools import partial
 import imgui
 from imgui.integrations.sdl2 import SDL2Renderer
-import time
 from setup_imgui_window import impl_pysdl2_init
 from attrdict import AttrDict
 
 from components import root_component
 from state import actions, actionTypes, setup_store
 from state.loadsave import saveState
-from print_info import print_kmod_table, print_window_reftable
 from db import SirensFile, create_tables
 
 from utils import getRightDirs

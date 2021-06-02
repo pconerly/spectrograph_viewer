@@ -6,7 +6,6 @@ import OpenGL.GL as gl
 
 from PIL import Image
 
-from np_utils import coordinateMeshgrid
 from state import AudioState
 
 
