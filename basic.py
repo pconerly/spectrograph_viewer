@@ -100,18 +100,19 @@ def impl_pysdl2_init():
         exit(1)
 
     SDL_GL_MakeCurrent(window, gl_context)
-    if SDL_GL_SetSwapInterval(1) == -1:
-        print("Warning: Unable to set VSync! SDL Error: " +
-              SDL_GetError().decode("utf-8"))
+    # if SDL_GL_SetSwapInterval(1) == -1:
+    #     print("Warning: Unable to set VSync! SDL Error: " +
+    #           SDL_GetError().decode("utf-8"))
 
-        if SDL_GL_SetSwapInterval(-1) == -1:
-            print("Warning: Unable to set adaptive VSync! SDL Error: " +
-                  SDL_GetError().decode("utf-8"))
+    #     if SDL_GL_SetSwapInterval(-1) == -1:
+    #         print("Warning: Unable to set adaptive VSync! SDL Error: " +
+    #               SDL_GetError().decode("utf-8"))
 
-            if SDL_GL_SetSwapInterval(0) == -1:
-                print("Warning: Unable to set immediate mode! " +
-                      SDL_GetError().decode("utf-8"))
+    #         if SDL_GL_SetSwapInterval(0) == -1:
+    #             print("Warning: Unable to set immediate mode! " +
+    #                   SDL_GetError().decode("utf-8"))
 
+    print('Swap interval:', SDL_GL_GetSwapInterval())
     # print('interval', interval)
     # if SDL_GL_SetSwapInterval(1):
     #     print("Warning: Unable to set VSync! SDL Error: " +
