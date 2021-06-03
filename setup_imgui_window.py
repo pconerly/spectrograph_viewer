@@ -3,7 +3,7 @@ from sdl2 import *
 
 
 def impl_pysdl2_init():
-    width, height = 1300, 1000
+    width, height = 800, 600
     window_name = "Spectograph Viewer"
 
     if SDL_Init(SDL_INIT_EVERYTHING) < 0:
