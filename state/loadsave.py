@@ -36,7 +36,7 @@ def loadState():
             os.path.dirname(os.path.dirname(__file__)))
 
         return {
-            'filename': os.path.join(PROJECT_PATH, 'treetop_01_intro.mp3'),
+            'filename': os.path.join(PROJECT_PATH, 'treetop_01_intro.wav'),
             'curDir': PROJECT_PATH,
             'showSirensFiles': True
         }
