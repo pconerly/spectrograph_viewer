@@ -104,7 +104,6 @@ def main():
 
     window, gl_context = impl_pysdl2_init()
     imgui.create_context()
-    print('is this code actually unreadable??? +++++')
     p_note = partial(notify, store)
     renderer = SDL2Renderer(window)
 

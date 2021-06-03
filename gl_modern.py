@@ -126,8 +126,11 @@ class Wrapper(object):
         if specto.shape != desiredShape:
             # print('Reshaping array from %s to %s' % (specto.shape,
             #                                          desiredShape))
-            specto = np.reshape(specto, desiredShape)
-            specto = (specto + 80) / 80.
+            try:
+                specto = np.reshape(specto, desiredShape)
+                specto = (specto + 80) / 80.
+            except:
+                return
 
         drawlineRelativePos = math.ceil(drawline - spectoPosFrame)
 

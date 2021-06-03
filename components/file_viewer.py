@@ -113,6 +113,9 @@ def file_viewer(state, dispatch):
                            audioState=state.audioState,
                            x_len=x_length,
                            y_len=y_length)
+            if wrap.fbo is None:
+                imgui.end()
+                return
 
             targetId = wrap.fbo.color_attachments[0].glo
 

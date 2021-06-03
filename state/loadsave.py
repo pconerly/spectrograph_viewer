@@ -1,4 +1,5 @@
 import os
+
 from attrdict import AttrDict
 import yaml
 
@@ -30,7 +31,15 @@ def loadState():
             data = fin.read()
             data = yaml.load(data)
             return data
-    return {}
+    else:
+        PROJECT_PATH = os.path.abspath(
+            os.path.dirname(os.path.dirname(__file__)))
+
+        return {
+            'filename': os.path.join(PROJECT_PATH, 'treetop_01_intro.mp3'),
+            'curDir': PROJECT_PATH,
+            'showSirensFiles': True
+        }
 
 
 if __name__ == '__main__':

@@ -72,8 +72,10 @@ def generate_spectrogram_timetable(y, sr):
     for mel in mel_intervals:
         for hopl in hopl_intervals:
             start = time.time()
-            S = librosa.feature.melspectrogram(
-                y, sr=sr, n_mels=mel, hop_length=hopl)
+            S = librosa.feature.melspectrogram(y,
+                                               sr=sr,
+                                               n_mels=mel,
+                                               hop_length=hopl)
             results.append([mel, hopl, time.time() - start, len(S), len(S[0])])
 
     print("Mels: \tHops: \ttime:")
@@ -94,8 +96,11 @@ def generate_spectrogram(y, sr, n_mels=1024, hop_l=512, n_fft=2048):
     # hop_l = 64
     # hop_l = 512
 
-    S = librosa.feature.melspectrogram(
-        y, sr=sr, n_mels=n_mels, hop_length=hop_l, n_fft=n_fft)
+    S = librosa.feature.melspectrogram(y,
+                                       sr=sr,
+                                       n_mels=n_mels,
+                                       hop_length=hop_l,
+                                       n_fft=n_fft)
     # hop length: 512 -> 3.89 seconds
     # 256 -> 6.67
     # 128 -> 13 seconds

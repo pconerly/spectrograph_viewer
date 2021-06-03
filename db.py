@@ -54,10 +54,9 @@ class SirensFile(DecBase):
     filepath = Column(String(512), index=True)
 
     status = Column(String(20))
-    last_updated = Column(
-        DateTime,
-        onupdate=datetime.datetime.now,
-        default=datetime.datetime.now)
+    last_updated = Column(DateTime,
+                          onupdate=datetime.datetime.now,
+                          default=datetime.datetime.now)
     spectograph = Column(LargeBinary)
     data = Column(LargeBinary)
 
@@ -72,7 +71,7 @@ class SirensFile(DecBase):
         return json.loads(self.data)
 
     def getSpectograph(self):
-        return np.frombuffer(self.spectograph, dtype=np.dtype('f8'))
+        return np.frombuffer(self.spectograph, dtype=np.dtype('float32'))
 
 
 def create_tables():
