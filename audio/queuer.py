@@ -1,6 +1,7 @@
 import os
 import sdl2
 from sdl2 import SDL_Init, SDL_Quit, rwops, version
+
 print('version.SDL_COMPILEDVERSION', version.SDL_COMPILEDVERSION)
 
 import numpy as np
@@ -43,7 +44,9 @@ class AudioQueuer(object):
 
         if self.verbose:
             print('duration', self.input_file.duration)
-            print('frames', self.input_file.nframes)
+            nframes = self.input_file.samplerate * self.input_file.duration
+
+            print('frames', nframes)
 
         spec = sdl2.SDL_AudioSpec(self.input_file.samplerate,
                                   sdl2.AUDIO_S16LSB, self.input_file.channels,

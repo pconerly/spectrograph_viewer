@@ -14,10 +14,14 @@ class ReadAIFF:
         self.bytesPerFrame = self.input_file.channels * self.input_file.samplerate
         print('CHANNELS:', self.input_file.channels)
         print('SAMPLERATE', self.input_file.samplerate)
-        print('NFRAMES', self.input_file.nframes)
+        nframes = self.input_file.samplerate * self.input_file.duration
+        print('N FRAMES', nframes)
+        # print('NFRAMES', self.input_file.nframes)
 
         self.gen = None
-        self.numFrames = self.input_file.nframes
+        self.numFrames = nframes
+        # self.numFrames = self.input_file.nframes
+        # self.numFrames = self.input_file.getnframes()
         self.done = threading.Event()
 
     def playNextChunk(self, unused, buf, bufSize):
@@ -60,11 +64,10 @@ class AudioPlayer(object):
             raise RuntimeError('failed to init audio')
 
         self.plyer = ReadAIFF(filename)
-        spec = sdl2.SDL_AudioSpec(self.plyer.input_file.samplerate,
-                                  sdl2.AUDIO_S16LSB,
-                                  self.plyer.input_file.channels, 512,
-                                  sdl2.SDL_AudioCallback(
-                                      self.plyer.playNextChunk))
+        spec = sdl2.SDL_AudioSpec(
+            self.plyer.input_file.samplerate, sdl2.AUDIO_S16LSB,
+            self.plyer.input_file.channels, 512,
+            sdl2.SDL_AudioCallback(self.plyer.playNextChunk))
 
         self.devID = sdl2.SDL_OpenAudioDevice(None, 0, spec, None, 0)
         print('devID', self.devID)
