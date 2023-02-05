@@ -63,10 +63,18 @@ class AudioPlayer(object):
         if sdl2.SDL_Init(sdl2.SDL_INIT_AUDIO) != 0:
             raise RuntimeError('failed to init audio')
 
+        input_file_format = sdl2.AUDIO_S16LSB
+        samples = 512
+        if (filename.endswith('.wav')):
+            input_file_format = sdl2.AUDIO_S16
+            samples = 4096
+
         self.plyer = ReadAIFF(filename)
         spec = sdl2.SDL_AudioSpec(
-            self.plyer.input_file.samplerate, sdl2.AUDIO_S16LSB,
-            self.plyer.input_file.channels, 512,
+            self.plyer.input_file.samplerate,  #freq
+            input_file_format,  #format
+            self.plyer.input_file.channels,  #channels
+            samples,  # samples
             sdl2.SDL_AudioCallback(self.plyer.playNextChunk))
 
         self.devID = sdl2.SDL_OpenAudioDevice(None, 0, spec, None, 0)
@@ -103,7 +111,8 @@ class AudioPlayer(object):
 
 
 if __name__ == '__main__':
-    fn = '/Users/peterconerly/code/sirens/treetop_01_intro.mp3'
+    fn = '/Users/peterconerly/code/spikes/treetop_01_intro.mp3'
+    fn = '/Users/peterconerly/code/spikes/treetop_01_intro.wav'
     audioPlayer = AudioPlayer()
     # playAudio()
     audioPlayer.setup(fn)
