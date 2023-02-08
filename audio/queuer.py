@@ -26,12 +26,12 @@ class AudioQueuer(object):
     plyer = None
     devID = None
     datas = []
-    done = None
+    done: None or threading.Event = None
     gen = None
     verbose = True
     bufferSize = 2048
 
-    def setup(self, filename):
+    def setup(self, filename: str):
         if sdl2.SDL_Init(sdl2.SDL_INIT_AUDIO) != 0:
             raise RuntimeError('failed to init audio')
 
