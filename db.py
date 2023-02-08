@@ -11,6 +11,7 @@ from sqlalchemy import (Table, Boolean, Column, Integer, String, Text,
                         MetaData, ForeignKey, LargeBinary, DateTime)
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker, scoped_session
+from sqlalchemy.orm.decl_api import DeclarativeMeta
 from os import path
 from utils import getRightDirs
 
@@ -21,11 +22,11 @@ engine = create_engine('sqlite:///%s' % databasefile, echo=True)
 
 print("engine", engine)
 
-DecBase = declarative_base(bind=engine)
+Base = declarative_base(bind=engine)
 Session = scoped_session(sessionmaker(engine))
 
 
-class Derp(DecBase):
+class Derp(Base):
     __tablename__ = 'derp'
 
     id = Column(Integer, primary_key=True)
@@ -47,7 +48,7 @@ StatusEnum = AttrDict({
 })
 
 
-class SirensFile(DecBase):
+class SirensFile(Base):
     __tablename__ = 'sirensfile'
 
     id = Column(Integer, primary_key=True)
@@ -76,7 +77,7 @@ class SirensFile(DecBase):
 
 def create_tables():
     # this call is idempotent
-    DecBase.metadata.create_all()
+    Base.metadata.create_all()
 
 
 session = Session()

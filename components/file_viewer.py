@@ -132,9 +132,9 @@ def file_viewer(state, dispatch):
                 if clickTracker.clicked(io.mouse_down[0]):
                     framesOfViewport = (wrap.viewportSize / (sr / hop_l))
                     viewX = imgui.get_io().mouse_pos.x - xPosStart
-                    derp = state.spectoPos + (framesOfViewport *
-                                              (viewX / wrap.viewportSize))
+                    pos = state.spectoPos + (framesOfViewport *
+                                             (viewX / wrap.viewportSize))
 
-                    dispatch(actions.setLocalStartTime(derp))
+                    dispatch(actions.setLocalStartTime(pos))
 
             imgui.end()

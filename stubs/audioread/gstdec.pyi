@@ -1,0 +1,53 @@
+import threading
+from .exceptions import DecodeError as DecodeError
+from _typeshed import Incomplete
+
+QUEUE_SIZE: int
+BUFFER_SIZE: int
+SENTINEL: str
+
+class GStreamerError(DecodeError): ...
+
+class UnknownTypeError(GStreamerError):
+    streaminfo: Incomplete
+    def __init__(self, streaminfo) -> None: ...
+
+class FileReadError(GStreamerError): ...
+
+class NoStreamError(GStreamerError):
+    def __init__(self) -> None: ...
+
+class MetadataMissingError(GStreamerError): ...
+
+class IncompleteGStreamerError(GStreamerError):
+    def __init__(self) -> None: ...
+
+def get_loop_thread(): ...
+
+class MainLoopThread(threading.Thread):
+    loop: Incomplete
+    daemon: bool
+    def __init__(self) -> None: ...
+    def run(self) -> None: ...
+
+class GstAudioFile:
+    running: bool
+    finished: bool
+    pipeline: Incomplete
+    dec: Incomplete
+    conv: Incomplete
+    sink: Incomplete
+    ready_sem: Incomplete
+    caps_handler: Incomplete
+    queue: Incomplete
+    thread: Incomplete
+    read_exc: Incomplete
+    got_caps: bool
+    def __init__(self, path) -> None: ...
+    def next(self): ...
+    __next__: Incomplete
+    def __iter__(self): ...
+    def close(self, force: bool = ...) -> None: ...
+    def __del__(self) -> None: ...
+    def __enter__(self): ...
+    def __exit__(self, exc_type, exc_val, exc_tb): ...
