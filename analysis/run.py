@@ -13,9 +13,7 @@ import time
 # from spikes.analysis.export_ogg import export_ogg
 
 from librosa.decompose import decompose
-# from librosa.core.time_frequency import fft_frequencies, mel_frequencies
 from librosa import fft_frequencies, mel_frequencies
-# from librosa import logamplitude
 
 PROJECT_DIR = os.path.dirname(__file__)
 OUTPUT_DIR = os.path.join(PROJECT_DIR, 'output')
@@ -63,11 +61,7 @@ def generate_spectrogram_timetable(y, sr):
     # If we're doing 1024 frequency samples by 86 steps per second, then we should have more information than 44100hz
 
     results = []
-    # mel_intervals = [256, 128, 64, 32, 16, 8, 4, 2]
-    mel_intervals = [1024]  #, 512, 256]
-    # mel_intervals = [370]
-    # hopl_intervals = [512, 256, 128, 64]
-    # hopl_intervals = [512]
+    mel_intervals = [1024]
     hopl_intervals = [64]
     for mel in mel_intervals:
         for hopl in hopl_intervals:

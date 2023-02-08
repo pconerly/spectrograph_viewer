@@ -28,7 +28,6 @@ print('--------------------')
 print('resource_dir', resource_dir)
 print('data_path', data_path)
 
-messages = []
 c_uint8 = ctypes.c_uint8
 
 # state_change = True
@@ -43,6 +42,7 @@ def print_progress():
 
 
 class ChangeManager(object):
+
     def __init__(self):
         self.state_change = True
 

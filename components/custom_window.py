@@ -1,4 +1,4 @@
-def derp_window(state, dispatch):
+def test_window(state, dispatch):
 
     imgui.set_next_window_size(300, 500)
     imgui.set_next_window_position(0, 20)
@@ -20,7 +20,7 @@ def derp_window(state, dispatch):
         # imgui.menu_item
 
         if imgui.begin_menu('what'):
-            imgui.menu_item('derp??')
+            imgui.menu_item('Foobar??')
             if imgui.begin_menu('iters'):
                 imgui.menu_item('1??')
                 imgui.menu_item('2??')

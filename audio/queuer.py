@@ -1,6 +1,7 @@
 import os
 import sdl2
 from sdl2 import SDL_Init, SDL_Quit, rwops, version
+from typing import List
 
 print('version.SDL_COMPILEDVERSION', version.SDL_COMPILEDVERSION)
 
@@ -25,8 +26,8 @@ class AudioQueuer(object):
     filename = None
     plyer = None
     devID = None
-    datas = []
-    done: None or threading.Event = None
+    datas: List[int] = []
+    done: threading.Event
     gen = None
     verbose = True
     bufferSize = 2048

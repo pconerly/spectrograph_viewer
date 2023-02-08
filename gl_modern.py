@@ -188,9 +188,11 @@ if __name__ == '__main__':
     specto = np.reshape(specto, (-1, y_len))
     print('specto.shape', specto.shape)
 
+    wrap = Wrapper()
+
     data = {
         'x_length': x_len,
         'y_length': y_len,
     }
-    fbo = getFBOforSpectograph(specto, data, show_image=True)
+    fbo = wrap.getFBOforSpectograph(specto, data, show_image=True)
     Image.frombytes('RGB', fbo.size, fbo.read(), 'raw', 'RGB', 0, -1).show()
