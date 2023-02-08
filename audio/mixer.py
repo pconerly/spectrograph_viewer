@@ -1,27 +1,14 @@
 import os
 import sdl2
 from sdl2 import SDL_Init, SDL_Quit, rwops, version
-print('version.SDL_COMPILEDVERSION', version.SDL_COMPILEDVERSION)
-# print('sdl2.version')
-# print(sdl2.version)
-# print('%d.%d.%d' %
-#       (sdl2.version.SDL_version.major, sdl2.version.SDL_version.minor,
-#        sdl2.version.SDL_version.patch))
-# print((sdl2.version.SDL_version.major, sdl2.version.SDL_version.minor,
-#        sdl2.version.SDL_version.patch))
 
-# print(sdl2.SDL_GetVersion())
+print('version.SDL_COMPILEDVERSION', version.SDL_COMPILEDVERSION)
+
 import sys
 import audioread
 import threading
 from random import randint
 
-# MIX_INIT_MP3
-# import os
-# import sys
-# import unittest
-# import ctypes
-# from sdl2 import SDL_Init, SDL_Quit, rwops, version
 try:
     from sdl2 import sdlmixer
     _HASSDLMIXER = True

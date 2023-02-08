@@ -26,15 +26,15 @@ Base = declarative_base(bind=engine)
 Session = scoped_session(sessionmaker(engine))
 
 
-class Derp(Base):
-    __tablename__ = 'derp'
+class KeyValue(Base):
+    __tablename__ = 'keyvalue'
 
     id = Column(Integer, primary_key=True)
     key = Column(String(80), index=True, unique=True)
     value = Column(String(256), unique=False)
 
     def __repr__(self):
-        return '<Derp %s: %s/%s/>' % (self.id, self.key, self.value)
+        return '<KeyValue %s: %s/%s/>' % (self.id, self.key, self.value)
 
     def __init__(self, key, value):
         self.key = key
@@ -84,13 +84,13 @@ session = Session()
 
 if __name__ == '__main__':
     # session = Session()
-    # d = Derp('what', 'FOOBAR')
-    # # d.save()
-    # print(d)
-    # session.add(d)
+    # kv = KeyValue('what', 'FOOBAR')
+    # # kv.save()
+    # print(kv)
+    # session.add(kv)
     # session.commit()
 
-    derps = session.query(Derp).all()
-    print(derps)
+    kvs = session.query(KeyValue).all()
+    print(kvs)
 
     session.close()

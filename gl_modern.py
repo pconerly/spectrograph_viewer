@@ -112,6 +112,7 @@ class Wrapper(object):
             if self.verbose:
                 print('_', end='', flush=True)
             return
+
         # else, we should rerender
         self.props = newProps
         self.getFBOforSpectograph(specto, data)
@@ -124,8 +125,6 @@ class Wrapper(object):
 
         desiredShape = (x_len, y_len)
         if specto.shape != desiredShape:
-            # print('Reshaping array from %s to %s' % (specto.shape,
-            #                                          desiredShape))
             try:
                 specto = np.reshape(specto, desiredShape)
                 specto = (specto + 80) / 80.

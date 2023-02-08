@@ -7,21 +7,16 @@ from random import randint
 
 
 class ReadAIFF:
+
     def __init__(self, filename):
 
         self.input_file = audioread.audio_open(os.path.realpath(filename))
         self.frameUpto = 0
         self.bytesPerFrame = self.input_file.channels * self.input_file.samplerate
-        print('CHANNELS:', self.input_file.channels)
-        print('SAMPLERATE', self.input_file.samplerate)
         nframes = self.input_file.samplerate * self.input_file.duration
-        print('N FRAMES', nframes)
-        # print('NFRAMES', self.input_file.nframes)
 
         self.gen = None
         self.numFrames = nframes
-        # self.numFrames = self.input_file.nframes
-        # self.numFrames = self.input_file.getnframes()
         self.done = threading.Event()
 
     def playNextChunk(self, unused, buf, bufSize):
@@ -82,20 +77,6 @@ class AudioPlayer(object):
         if self.devID == 0:
             raise RuntimeError('failed to open audio device')
 
-        # Tell audio device to start playing:
-        # # Wait until all samples are done playing
-        # # print('Got here')
-        # # sdl2.SDL_Delay(5000)
-        # sdl2.SDL_CloseAudioDevice(self.devID)
-
-        # this worked
-        # sdl2.SDL_PauseAudioDevice(self.devID, 1)
-        # sdl2.SDL_PauseAudioDevice(self.devID, 0)
-        # self.plyer.done.wait()
-
-        # sdl2.SDL_Delay(8000)
-        # sdl2.SDL_Delay(10000)
-        # sdl2.SDL_CloseAudioDevice(self.devID)
         self.playAudio()
 
     def playAudio(self):
@@ -111,9 +92,7 @@ class AudioPlayer(object):
 
 
 if __name__ == '__main__':
-    fn = '/Users/peterconerly/code/spikes/treetop_01_intro.mp3'
+    # fn = '/Users/peterconerly/code/spikes/treetop_01_intro.mp3'
     fn = '/Users/peterconerly/code/spikes/treetop_01_intro.wav'
     audioPlayer = AudioPlayer()
-    # playAudio()
     audioPlayer.setup(fn)
-    # audioPlayer.playAudio()

@@ -125,14 +125,13 @@ def main():
         while SDL_PollEvent(ctypes.byref(event)) != 0:
             if event.type == SDL_QUIT:
                 print("SDL_QUIT")
-                # save state
                 saveState(state)
                 running = False
                 break
 
             if (event.type == SDL_KEYDOWN):
                 keysym = event.key.keysym
-                # lgui is CMD in OSX.
+                # 'LGUI' is 'CMD' in OSX.
                 if keysym.mod == KMOD_LCTRL or keysym.mod == KMOD_LGUI:
                     if keysym.scancode == SDL_SCANCODE_N:
                         dispatch(actions.openFilepicker())
@@ -143,7 +142,7 @@ def main():
             if event.type == SDL_WINDOWEVENT:
                 windowFlags.asByte = event.window.event
 
-                # These are "backwards" and I have no idea why.
+                # These flags are reversed and I have no idea why.
                 if windowFlags.SDL_WINDOW_SHOWN:
                     # print("got window shown")
                     window_has_focus = False
@@ -169,13 +168,6 @@ def main():
 
             root_component(state, dispatch)
 
-            # imgui.show_test_window()
-
-            # imgui.begin("Custom window", True)
-            # imgui.text("Bar")
-            # imgui.text_colored("Eggs", 0.2, 1., 0.)
-            # imgui.end()
-
             gl.glClearColor(1., 1., 1., 1)
             gl.glClear(gl.GL_COLOR_BUFFER_BIT)
             imgui.render()
@@ -196,31 +188,3 @@ if __name__ == "__main__":
         print('Error running main')
         print(e)
         traceback.print_exc()
-
-# except Exception as e:
-
-#     print('Got exception')
-
-#     # Get current system exception
-#     ex_type, ex_value, ex_traceback = sys.exc_info()
-
-#     # Extract unformatter stack traces as tuples
-#     trace_back = traceback.extract_tb(ex_traceback)
-
-#     # Format stacktrace
-#     stack_trace = list()
-
-#     for trace in trace_back:
-#         stack_trace.append(
-#             "File : %s , Line : %d, Func.Name : %s, Message : %s" %
-#             (trace[0], trace[1], trace[2], trace[3]))
-
-#     print("Exception type : %s " % ex_type.__name__)
-#     print("Exception message : %s" % ex_value)
-#     print("Stack trace : %s" % stack_trace)
-
-#     with open('spectograph_viewer.log', 'w') as fout:
-
-#         fout.write("Exception type : %s " % ex_type.__name__)
-#         fout.write("Exception message : %s" % ex_value)
-#         fout.write("Stack trace : %s" % stack_trace)

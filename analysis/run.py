@@ -124,12 +124,6 @@ def main(S, sr):
 
     pdesc(undecomposed_S, 'de-decomposed_S')
 
-    # export_mp3(undecomposed_S, 'treetop_undecomposed')
-    # export_ogg(undecomposed_S, 'treetop_undecomposed')
-    # export_ogg(y, 'derp', sr=sr)
-
-    # write it to mp3 or .wav
-
 
 def form_json(nparr, **kwargs):
     data = {
@@ -170,17 +164,11 @@ def find_maxes(log_S, f_mels):
     # I may need to figure out a way to record a threshold
 
     for t in range(len(log_S[0])):
-        # print('whats t: %s' % t)
-        # we're in a new timestamp
-        # for f in range(len(log_S)):
-        #     pass
         localmaxes = librosa.util.localmax(log_S[:, t])
         for index, lmax in enumerate(localmaxes):
-            # print(lmax)
             if lmax:
                 note_pieces.append((f_mels[index], t))
-    # print('note_pieces')
-    # print(note_pieces)
+
     print('len of note_pieces %s' % len(note_pieces))
     return note_pieces
 
@@ -200,7 +188,6 @@ def gen_spectrograph_and_save(filename,
 
     note_pieces = find_maxes(log_S, f_mels)
     if special_export:
-        # log_S[:80].tofile('out_80.txt')
         print('Shape of special output: %s' % (S[:, 80].shape))
         S[:, 80].tofile('first_80.txt')
 
@@ -229,18 +216,7 @@ if __name__ == '__main__':
     start = time.time()
 
     filename = 'treetop_01_intro.mp3'
-    # gen_spectrograph_and_save(filename, save=True)
 
     gen_spectrograph_and_save(filename, special_export=True)
-    # gen_spectrograph_and_save(filename)
 
-    # mel_fs()
-    # y, sr = grabfile(filename)
-    # generate_spectrogram_timetable(y, sr)
-    # S, sr = generate_spectrogram(y, sr)
-    # log_S = convert_to_log(S)
-
-    # mel_fs(n_mels=1024)
-    # S = generate_spectrogram(y, sr)
-    # main(S, sr)
     print('Finished in %s seconds' % (time.time() - start))
