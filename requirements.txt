@@ -33,7 +33,9 @@ scipy==1.6.3
 simplejson==3.17.2
 six==1.16.0
 SoundFile==0.10.3.post1
-SQLAlchemy==1.4.17
+SQLAlchemy==1.4.46
+sqlalchemy-stubs==0.4
+sqlalchemy2-stubs==0.0.2a32
 threadpoolctl==2.1.0
 tomli==2.0.1
 types-appdirs==1.4.3.1
