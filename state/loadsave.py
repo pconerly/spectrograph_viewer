@@ -43,7 +43,7 @@ def loadState():
 
 
 if __name__ == '__main__':
-    save(AttrDict({'filename': 'derp', 'curDir': 'what'}))
+    saveState(AttrDict({'filename': 'derp', 'curDir': 'what'}))
 
     derp = {
         'name': "The Cloak 'Colluin'",
@@ -54,4 +54,4 @@ if __name__ == '__main__':
         'flags': ['INT', 'WIS', 'SPEED', 'STEALTH']
     }
 
-    load()
+    loadState()
